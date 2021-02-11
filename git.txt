@@ -1,0 +1,78 @@
+# Bloc 1
+mkdir pds_prova_git
+cd pds_prova_git
+git init
+> A.txt
+git add A.txt
+git commit -m "fitxer inicial"
+> B.txt
+git add B.txt
+git commit -m "fitxer inicial"
+
+# Bloc 2
+echo "Canvi A1" >> A.txt
+echo "Canvi B1" >> B.txt
+git add *.txt
+git commit -m "canvis Bloc 2"
+
+# Bloc 3
+git branch branca1
+git checkout branca1
+> C.txt
+git add C.txt
+git commit -m "fitxer inicial"
+echo "canvi C1 branca 1" >> C.txt
+git add C.txt
+git commit -m "canvis Bloc 3"
+
+# Bloc 4
+git checkout master
+git branch branca2
+git checkout branca2
+> D.txt
+git add D.txt
+git commit -m "fitxer inicial"
+echo "canvia D1 branca 2" >> D.txt
+git add D.txt
+git commit -m "canvis Bloc 4"
+
+# Bloc 5
+git checkout branca1
+git merge -s recursive branca2 -m "merge branca2 into branca1"
+git checkout master
+git merge -s recursive branca1 -m "merge branca1 into master"
+
+# Bloc 6
+> E.txt
+git add E.txt
+git commit -m "fitxer inicial"
+git checkout -b branca3
+echo "canvia E1 branca 3" >> E.txt
+git add E.txt
+git commit -m "canvis Bloc 6"
+git checkout master
+git checkout -b branca4
+echo "canvia E1 branca 4" >> E.txt
+git add E.txt
+git commit -m "canvis Bloc 6"
+git checkout master
+git merge -s recursive branca3 -m "merge branca3 into master"
+git merge -s ours branca4 -m "merge branca4 into master"
+
+# Bloc 7
+echo "Canvi A2" >> A.txt
+git add A.txt
+git commit -m "canvis Bloc 7"
+git revert HEAD --no-edit
+
+# Bloc 8
+echo "Canvi A3" >> A.txt
+git add A.txt
+git commit -m "canvi A3"
+echo "Canvi B2" >> B.txt
+git add B.txt
+git commit -m "canvi B2"
+echo "Canvi C1" >> C.txt
+git add C.txt
+git commit -m "canvi C1"
+git revert HEAD~1 --no-edit
